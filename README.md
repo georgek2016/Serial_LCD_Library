@@ -6,6 +6,8 @@ EXCEPT when it says `lcd.print()` If you're copying example code, you'll need to
 The wiring is simple- Provide appropriate power and ground (there are 5v and 3.3v varieties
 of the LCD) and connect the LCD's `RX` pin to the Core or Photon's `TX` pin!_
 
+version 0.02 - added support for 20x4 lcd
+
 ## Examples
 
 1. __Basic use__ - A very short example showing LCD clearing and printing
