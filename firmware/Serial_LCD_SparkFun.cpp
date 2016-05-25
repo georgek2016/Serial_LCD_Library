@@ -154,7 +154,7 @@ void Serial_LCD_SparkFun::setCursor(int row, int col){
 		{ 0x00, 0x40, 0x10, 0x50 },
 		{ 0x00, 0x40, 0x14, 0x54 }
 	};
-	if((row > 0 && row < 3) && (col > 0 && col < 17)){
+	if((row > 0 && row <= _numlines ) && (col > 0 && col <= _numchars )){
            command(LCD_SETDDRAMADDR | ((col - 1) + row_offsets[_rowoffset][(row - 1)]));
 	}
 }
@@ -175,6 +175,50 @@ void Serial_LCD_SparkFun::createChar(int location, uint8_t charmap[]){
 void Serial_LCD_SparkFun::printCustomChar(int num){
 	Serial1.write((num - 1));
 }
+
+// new in 1.6: sets the type of the LCD
+void Serial_LCD_SparkFun::setType(int num){
+/*
+  3: type 2x16
+  4: type 2x20
+  5: type 4x16
+  6: type 4x20
+*/
+	specialCommand(num);
+	switch ( num ) {
+		case 3: {
+			_numlines = LCD_2LINE;
+			_numchars = LCD_16CHAR;
+			_rowoffset = 0;
+		}
+		case 4: {
+			_numlines = LCD_2LINE;
+			_numchars = LCD_20CHAR;
+			_rowoffset = 0;
+		}
+		case 5: {
+			_numlines = LCD_4LINE;
+			_numchars = LCD_16CHAR;
+			_rowoffset = 1;
+		}
+		case 6: {
+			_numlines = LCD_4LINE;
+			_numchars = LCD_20CHAR;
+			_rowoffset = 1;
+		}
+	}
+}
+
+// new in 1.6: scrolls text to left with one position
+void Serial_LCD_SparkFun::scrollLeft(){
+  command(0x18);
+}
+
+// new in 1.6: scrolls text to right with one position
+void Serial_LCD_SparkFun::scrollRight(){
+	command(0x1C);
+}
+
 
 // PRIVATE FUNCTIONS
 

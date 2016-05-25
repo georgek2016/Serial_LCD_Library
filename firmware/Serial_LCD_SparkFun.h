@@ -73,6 +73,9 @@ public:
 	void setBrightness(int);
 
 	void setSplash();
+	void setType(int);  // new in 1.6
+	void scrollLeft();  // new in 1.6
+	void scrollRight(); // new in 1.6
 	void toggleSplash();
 
 	void blink();
