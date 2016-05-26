@@ -1,0 +1,27 @@
+<!-- Replace your-device-ID-goes-here with your actual device ID
+and replace your-access-token-goes-here with your actual access token-->
+<!DOCTYPE>
+<html>
+  <body>
+  <center>
+  <br>
+  <br>
+  <br>
+	Serial_LCD_SparkFun test - use this with the '2-internet-display' example
+  <br><br>
+  <form action="https://api.particle.io/v1/devices/your-device-ID-goes-here/lcdrow?access_token=your-access-token-goes-here" method="POST">
+    row: <input type="text" value="1" name="lcdrow1"> 
+    <input type="submit" value="Submit">
+  </form>
+  <form action="https://api.particle.io/v1/devices/your-device-ID-goes-here/lcdcol?access_token=your-access-token-goes-here" method="POST">
+   col: <input type="text" value="1" name="lcdcol"> 
+  <input type="submit" value="Submit">
+  </form>
+  <form action="https://api.particle.io/v1/devices/your-device-ID-goes-here/lcdtxt?access_token=your-access-token-goes-here" method="POST">
+   txt: <input type="text" value="" name="lcdtxt"> 
+  <input type="submit" value="Submit">
+  </form>
+  </center>
+  </body>
+</html>
+
