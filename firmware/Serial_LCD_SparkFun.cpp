@@ -179,34 +179,30 @@ void Serial_LCD_SparkFun::printCustomChar(int num){
 // new in 1.6: sets the type of the LCD
 void Serial_LCD_SparkFun::setType(int num){
 /*
-  3: type 2x16
-  4: type 2x20
-  5: type 4x16
-  6: type 4x20
+  3: 20 Characters Wide
+  4: 16 Characters Wide
+  5: 4 Lines
+  6: 2 Lines
+
+  Each mode needs to be sent seperatly, so to set a 20x4 - use must call setType( 3 ) & setType( 5 )
 */
 	specialCommand(num);
 	switch ( num ) {
 		case 3: {
-			_numlines = LCD_2LINE;
-			_numchars = LCD_16CHAR;
-			_rowoffset = 0;
+			_numchars = LCD_20CHAR;
+			_rowoffset = 1;
 		}
 		case 4: {
-			_numlines = LCD_2LINE;
-			_numchars = LCD_20CHAR;
+			_numchars = LCD_16CHAR;
 			_rowoffset = 0;
 		}
 		case 5: {
 			_numlines = LCD_4LINE;
-			_numchars = LCD_16CHAR;
-			_rowoffset = 1;
-		}
+			}
 		case 6: {
-			_numlines = LCD_4LINE;
-			_numchars = LCD_20CHAR;
-			_rowoffset = 1;
+			_numlines = LCD_2LINE;
+			}
 		}
-	}
 }
 
 // new in 1.6: scrolls text to left with one position
