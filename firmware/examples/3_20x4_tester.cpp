@@ -26,7 +26,8 @@ void setup() {
  Spark.function("lcdTxt", lcdMsgTxt);
  
  // Start with a blank slate
- lcd.setType( 6 );
+ lcd.setType( 3 ); // 20 Character
+ lcd.setType( 5 ); // 4 Lines
  lcd.clear();
  lcd.setBrightness( 30 );
  Serial1.print("Waiting");
